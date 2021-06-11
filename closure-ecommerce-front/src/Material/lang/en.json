@@ -1,0 +1,69 @@
+{
+  "header" : {
+    "home": "Home",
+    "it-job": "All Jobs",
+    "it-company": "IT Companies",
+    "blog": "Blog",
+    "logout": "Log out",
+    "login": "Log in",
+    "recruiter": "Become Recruiter"
+  },
+  "recruitment-search": {
+    "placeholder": {
+      "keyword": "Keyword",
+      "location": "Location",
+      "position": "Position",
+      "type": "Job type",
+      "experience": "Experience",
+      "sub_catalog": "Category",
+      "salary": "Salary"
+    },
+    "search": "Search Now",
+    "reset": "Reset search"
+  },
+  "recruitment-sort": {
+    "headline": "Jobs Found",
+    "label": "Sort by",
+    "placeholder": {
+      "date": ""
+    }
+  },
+  "recruitment-card": {
+    "apply": "Apply Now",
+    "save": "Save Job",
+    "job-description": "Job Description",
+    "requirement": "Your Skills and Experience",
+    "benefit": "Why You'll Love Working Here",
+    "information": "Recruitment Information"
+  },
+  "recruiter-card": {
+    "followBtn": "Follow",
+    "reviewBtn": "Write a review",
+    "jobTab": "Jobs",
+    "reviewTab": "Reviews",
+    "overviewTab": "Overview",
+    "overviewContent": "Overview about"
+  },
+  "login-form": {
+    "placeholder": {
+      "email": "Email",
+      "password": "Password",
+      "username": "Username",
+      "confirm-password": "Password Confirm"
+    },
+    "button": {
+      "login": "Login",
+      "register": "Register"
+    },
+    "headline": {
+      "login": "Login",
+      "register": "Register"
+    },
+    "help": {
+      "forgot-username-password": "Forgot Username / Password?",
+      "change-to-register": "Doesn't have an account, create one here",
+      "change-to-login": "Already have an account, login here"
+    }
+  }
+}
+
