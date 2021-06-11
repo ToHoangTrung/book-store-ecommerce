@@ -1,9 +1,9 @@
-package tht.closure.operator.util;
+package r21.closure.operator.util;
 
-import tht.closure.operator.model.dto.CatalogDto;
-import tht.closure.operator.model.dto.SubCatalogDto;
-import tht.closure.operator.model.entity.Catalog;
-import tht.closure.operator.model.entity.SubCatalog;
+import r21.closure.operator.model.dto.CatalogDto;
+import r21.closure.operator.model.dto.SubCatalogDto;
+import r21.closure.operator.model.entity.Catalog;
+import r21.closure.operator.model.entity.SubCatalog;
 
 import java.util.stream.Collectors;
 

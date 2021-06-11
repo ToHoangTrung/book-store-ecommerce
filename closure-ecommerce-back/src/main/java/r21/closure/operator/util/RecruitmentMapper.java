@@ -1,10 +1,10 @@
-package tht.closure.operator.util;
+package r21.closure.operator.util;
 
-import tht.closure.operator.model.dto.RecruiterDto;
-import tht.closure.operator.model.dto.RecruitmentDto;
-import tht.closure.operator.model.entity.Recruitment;
-import tht.closure.operator.model.entity.RecruitmentSubCatalog;
-import tht.closure.operator.model.entity.SubCatalog;
+import r21.closure.operator.model.dto.RecruiterDto;
+import r21.closure.operator.model.dto.RecruitmentDto;
+import r21.closure.operator.model.entity.Recruitment;
+import r21.closure.operator.model.entity.RecruitmentSubCatalog;
+import r21.closure.operator.model.entity.SubCatalog;
 
 import java.util.List;
 import java.util.stream.Collectors;

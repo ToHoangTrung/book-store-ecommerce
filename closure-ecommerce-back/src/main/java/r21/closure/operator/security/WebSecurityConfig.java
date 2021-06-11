@@ -1,4 +1,4 @@
-package tht.closure.operator.security;
+package r21.closure.operator.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,9 +13,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import tht.closure.operator.security.jwt.AuthEntryPointJwt;
-import tht.closure.operator.security.jwt.AuthTokenFilter;
-import tht.closure.operator.security.service.UserDetailsServiceImpl;
+import r21.closure.operator.security.jwt.AuthEntryPointJwt;
+import r21.closure.operator.security.jwt.AuthTokenFilter;
+import r21.closure.operator.security.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity

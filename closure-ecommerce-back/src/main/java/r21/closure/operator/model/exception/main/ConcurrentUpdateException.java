@@ -1,4 +1,4 @@
-package tht.closure.operator.model.exception.main;
+package r21.closure.operator.model.exception.main;
 
 import org.springframework.dao.OptimisticLockingFailureException;
 

@@ -1,8 +1,8 @@
-package tht.closure.operator.repository;
+package r21.closure.operator.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import tht.closure.operator.model.entity.User;
+import r21.closure.operator.model.entity.User;
 
 import java.util.Optional;
 

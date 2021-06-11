@@ -1,9 +1,9 @@
-package tht.closure.operator.predicate;
+package r21.closure.operator.predicate;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
 import org.springframework.stereotype.Component;
-import tht.closure.operator.model.dto.SearchCriteria;
+import r21.closure.operator.model.dto.SearchCriteria;
 
 import java.util.ArrayList;
 import java.util.List;

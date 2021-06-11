@@ -1,11 +1,11 @@
-package tht.closure.operator.security.service;
+package r21.closure.operator.security.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
-import tht.closure.operator.model.entity.User;
-import tht.closure.operator.model.exception.main.ResourceNotFoundException;
-import tht.closure.operator.repository.UserRepository;
+import r21.closure.operator.model.entity.User;
+import r21.closure.operator.model.exception.main.ResourceNotFoundException;
+import r21.closure.operator.repository.UserRepository;
 
 import javax.transaction.Transactional;
 

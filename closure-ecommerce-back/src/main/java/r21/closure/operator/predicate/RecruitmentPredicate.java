@@ -1,9 +1,9 @@
-package tht.closure.operator.predicate;
+package r21.closure.operator.predicate;
 
 import com.querydsl.core.types.dsl.*;
-import tht.closure.operator.model.dto.SearchCriteria;
-import tht.closure.operator.model.entity.QRecruitment;
-import tht.closure.operator.model.entity.Recruitment;
+import r21.closure.operator.model.dto.SearchCriteria;
+import r21.closure.operator.model.entity.QRecruitment;
+import r21.closure.operator.model.entity.Recruitment;
 
 public class RecruitmentPredicate {
 

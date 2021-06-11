@@ -1,4 +1,4 @@
-package tht.closure.operator.service.impl;
+package r21.closure.operator.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,22 +8,22 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import tht.closure.operator.model.dto.UserDto;
-import tht.closure.operator.model.entity.Candidate;
-import tht.closure.operator.model.entity.Recruiter;
-import tht.closure.operator.model.entity.User;
-import tht.closure.operator.model.exception.user.PasswordNotCorrectException;
-import tht.closure.operator.repository.CandidateRepository;
-import tht.closure.operator.repository.RecruiterRepository;
-import tht.closure.operator.repository.UserRepository;
-import tht.closure.operator.security.dto.JwtResponse;
-import tht.closure.operator.security.dto.LoginRequestDto;
-import tht.closure.operator.security.dto.RegisterRequestDto;
-import tht.closure.operator.security.jwt.AuthTokenFilter;
-import tht.closure.operator.security.jwt.JwtUtils;
-import tht.closure.operator.security.service.UserDetailsImpl;
-import tht.closure.operator.service.AuthService;
-import tht.closure.operator.validator.AuthValidator;
+import r21.closure.operator.model.dto.UserDto;
+import r21.closure.operator.model.entity.Candidate;
+import r21.closure.operator.model.entity.Recruiter;
+import r21.closure.operator.model.entity.User;
+import r21.closure.operator.model.exception.user.PasswordNotCorrectException;
+import r21.closure.operator.repository.CandidateRepository;
+import r21.closure.operator.repository.RecruiterRepository;
+import r21.closure.operator.repository.UserRepository;
+import r21.closure.operator.security.dto.JwtResponse;
+import r21.closure.operator.security.dto.LoginRequestDto;
+import r21.closure.operator.security.dto.RegisterRequestDto;
+import r21.closure.operator.security.jwt.AuthTokenFilter;
+import r21.closure.operator.security.jwt.JwtUtils;
+import r21.closure.operator.security.service.UserDetailsImpl;
+import r21.closure.operator.service.AuthService;
+import r21.closure.operator.validator.AuthValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -54,7 +54,7 @@ public class AuthServiceImpl implements AuthService {
     private JwtUtils jwtUtils;
 
     @Autowired
-    private AuthTokenFilter authTokenFilter;
+    private AuthTokenFilter aur21okenFilter;
 
     @Override
     public void userRegister(RegisterRequestDto registerDto) {

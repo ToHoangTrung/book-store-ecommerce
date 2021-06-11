@@ -1,7 +1,7 @@
-package tht.closure.operator.model.exception.user;
+package r21.closure.operator.model.exception.user;
 
-import tht.closure.operator.model.exception.config.ItJobBoardExceptionErrorCode;
-import tht.closure.operator.model.exception.main.ResourceHaveAlreadyExistException;
+import r21.closure.operator.model.exception.config.ItJobBoardExceptionErrorCode;
+import r21.closure.operator.model.exception.main.ResourceHaveAlreadyExistException;
 
 public class EmailHaveAlreadyExistException extends ResourceHaveAlreadyExistException {
 

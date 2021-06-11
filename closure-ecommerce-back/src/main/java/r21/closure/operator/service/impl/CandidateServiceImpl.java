@@ -1,11 +1,11 @@
-package tht.closure.operator.service.impl;
+package r21.closure.operator.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tht.closure.operator.model.dto.RecruitmentDto;
-import tht.closure.operator.model.dto.UserDto;
-import tht.closure.operator.repository.CandidateRepository;
-import tht.closure.operator.service.CandidateService;
+import r21.closure.operator.model.dto.RecruitmentDto;
+import r21.closure.operator.model.dto.UserDto;
+import r21.closure.operator.repository.CandidateRepository;
+import r21.closure.operator.service.CandidateService;
 
 @Service
 public class CandidateServiceImpl implements CandidateService {

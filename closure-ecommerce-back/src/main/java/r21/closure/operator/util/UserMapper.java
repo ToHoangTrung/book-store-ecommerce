@@ -1,7 +1,7 @@
-package tht.closure.operator.util;
+package r21.closure.operator.util;
 
-import tht.closure.operator.model.dto.UserDto;
-import tht.closure.operator.model.entity.User;
+import r21.closure.operator.model.dto.UserDto;
+import r21.closure.operator.model.entity.User;
 
 public class UserMapper {
 

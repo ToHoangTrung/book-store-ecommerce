@@ -1,4 +1,4 @@
-package tht.closure.operator.controller;
+package r21.closure.operator.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tht.closure.operator.model.dto.CatalogDto;
-import tht.closure.operator.model.dto.SubCatalogDto;
-import tht.closure.operator.service.CatalogService;
+import r21.closure.operator.model.dto.CatalogDto;
+import r21.closure.operator.model.dto.SubCatalogDto;
+import r21.closure.operator.service.CatalogService;
 
 import java.util.List;
 

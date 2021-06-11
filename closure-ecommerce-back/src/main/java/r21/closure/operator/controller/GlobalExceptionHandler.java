@@ -1,4 +1,4 @@
-package tht.closure.operator.controller;
+package r21.closure.operator.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -6,10 +6,10 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import tht.closure.operator.model.dto.ExceptionResponse;
-import tht.closure.operator.model.exception.config.ItJobBoardException;
-import tht.closure.operator.model.exception.config.ItJobBoardExceptionErrorCode;
-import tht.closure.operator.model.exception.main.ConcurrentUpdateException;
+import r21.closure.operator.model.dto.ExceptionResponse;
+import r21.closure.operator.model.exception.config.ItJobBoardException;
+import r21.closure.operator.model.exception.config.ItJobBoardExceptionErrorCode;
+import r21.closure.operator.model.exception.main.ConcurrentUpdateException;
 
 import java.util.ArrayList;
 import java.util.List;

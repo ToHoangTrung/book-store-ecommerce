@@ -177,7 +177,7 @@ const Register = () => {
     );
 }
 
-const LoginRegister = () => {
+const LoginRegisterPage = () => {
 
     const useStyles = makeStyles((props) => ({
         root: {
@@ -224,7 +224,7 @@ const LoginRegister = () => {
                             <Row>
                                 <Col sm={6}>
                                     <div className={classes.logo}>
-                                        <img src={process.env.PUBLIC_URL + "/logo.png"}/>
+                                        <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnVugaMxBHniTVZtkTuKDWGue3TCtZW8PGEnGWRWkG2Srmy9YP3FLomq8Y7GAVgEaz94o&usqp=CAU"}/>
                                     </div>
                                 </Col>
                                 <Col sm={6}>
@@ -262,4 +262,4 @@ const LoginRegister = () => {
     );
 };
 
-export default LoginRegister;
+export default LoginRegisterPage;

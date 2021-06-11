@@ -1,4 +1,4 @@
-package tht.closure.operator.model.exception.config;
+package r21.closure.operator.model.exception.config;
 
 public class ItJobBoardExceptionErrorCode {
 

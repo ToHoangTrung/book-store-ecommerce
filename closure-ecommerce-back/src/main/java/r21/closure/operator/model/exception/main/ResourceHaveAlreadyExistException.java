@@ -1,9 +1,9 @@
-package tht.closure.operator.model.exception.main;
+package r21.closure.operator.model.exception.main;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import tht.closure.operator.model.exception.config.ItJobBoardException;
-import tht.closure.operator.model.exception.config.ItJobBoardExceptionErrorCode;
+import r21.closure.operator.model.exception.config.ItJobBoardException;
+import r21.closure.operator.model.exception.config.ItJobBoardExceptionErrorCode;
 
 @ResponseStatus(HttpStatus.CONFLICT)
 public class ResourceHaveAlreadyExistException extends ItJobBoardException {

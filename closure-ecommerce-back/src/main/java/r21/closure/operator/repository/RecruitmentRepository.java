@@ -1,4 +1,4 @@
-package tht.closure.operator.repository;
+package r21.closure.operator.repository;
 
 import com.querydsl.core.types.dsl.StringExpression;
 import com.querydsl.core.types.dsl.StringPath;
@@ -8,8 +8,8 @@ import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
 import org.springframework.data.querydsl.binding.QuerydslBindings;
 import org.springframework.data.querydsl.binding.SingleValueBinding;
 import org.springframework.stereotype.Repository;
-import tht.closure.operator.model.entity.QRecruitment;
-import tht.closure.operator.model.entity.Recruitment;
+import r21.closure.operator.model.entity.QRecruitment;
+import r21.closure.operator.model.entity.Recruitment;
 
 @Repository
 public interface RecruitmentRepository extends JpaRepository<Recruitment, Long>,

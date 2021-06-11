@@ -1,13 +1,13 @@
-package tht.closure.operator.controller;
+package r21.closure.operator.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tht.closure.operator.security.dto.JwtResponse;
-import tht.closure.operator.security.dto.LoginRequestDto;
-import tht.closure.operator.security.dto.RegisterRequestDto;
-import tht.closure.operator.service.AuthService;
+import r21.closure.operator.security.dto.JwtResponse;
+import r21.closure.operator.security.dto.LoginRequestDto;
+import r21.closure.operator.security.dto.RegisterRequestDto;
+import r21.closure.operator.service.AuthService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

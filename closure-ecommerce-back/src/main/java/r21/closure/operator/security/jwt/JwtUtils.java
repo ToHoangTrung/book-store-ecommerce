@@ -1,10 +1,10 @@
-package tht.closure.operator.security.jwt;
+package r21.closure.operator.security.jwt;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
-import tht.closure.operator.security.service.UserDetailsImpl;
+import r21.closure.operator.security.service.UserDetailsImpl;
 import io.jsonwebtoken.*;
 
 import java.util.Date;
@@ -35,9 +35,9 @@ public class JwtUtils {
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
     }
 
-    public boolean validateJwtToken(String authToken) {
+    public boolean validateJwtToken(String aur21oken) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
+            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(aur21oken);
             return true;
         } catch (SignatureException e) {
             Logger.error("Invalid JWT signature: {}", e.getMessage());

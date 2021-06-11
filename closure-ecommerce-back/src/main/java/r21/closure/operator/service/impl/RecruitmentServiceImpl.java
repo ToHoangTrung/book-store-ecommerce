@@ -1,15 +1,15 @@
-package tht.closure.operator.service.impl;
+package r21.closure.operator.service.impl;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tht.closure.operator.model.dto.RecruitmentDto;
-import tht.closure.operator.model.entity.*;
-import tht.closure.operator.predicate.RecruitmentPredicatesBuilder;
-import tht.closure.operator.repository.RecruitmentRepository;
-import tht.closure.operator.service.RecruitmentService;
-import tht.closure.operator.util.RecruitmentMapper;
+import r21.closure.operator.model.dto.RecruitmentDto;
+import r21.closure.operator.model.entity.*;
+import r21.closure.operator.predicate.RecruitmentPredicatesBuilder;
+import r21.closure.operator.repository.RecruitmentRepository;
+import r21.closure.operator.service.RecruitmentService;
+import r21.closure.operator.util.RecruitmentMapper;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -1,6 +1,6 @@
-package tht.closure.operator.service;
+package r21.closure.operator.service;
 
-import tht.closure.operator.model.dto.RecruitmentDto;
+import r21.closure.operator.model.dto.RecruitmentDto;
 
 import java.util.List;
 

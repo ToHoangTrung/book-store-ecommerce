@@ -1,4 +1,4 @@
-package tht.closure.operator.controller;
+package r21.closure.operator.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tht.closure.operator.model.dto.RecruitmentDto;
-import tht.closure.operator.model.dto.UserDto;
-import tht.closure.operator.service.AuthService;
-import tht.closure.operator.service.CandidateService;
+import r21.closure.operator.model.dto.RecruitmentDto;
+import r21.closure.operator.model.dto.UserDto;
+import r21.closure.operator.service.AuthService;
+import r21.closure.operator.service.CandidateService;
 
 @RestController
 @RequestMapping("/api/candidate")

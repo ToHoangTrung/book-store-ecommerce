@@ -1,4 +1,4 @@
-package tht.closure.operator.model.entity;
+package r21.closure.operator.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;

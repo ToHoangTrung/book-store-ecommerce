@@ -1,10 +1,10 @@
-package tht.closure.operator.security.service;
+package r21.closure.operator.security.service;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import tht.closure.operator.model.entity.User;
+import r21.closure.operator.model.entity.User;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

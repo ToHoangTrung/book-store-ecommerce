@@ -1,7 +1,7 @@
-package tht.closure.operator.util;
+package r21.closure.operator.util;
 
-import tht.closure.operator.model.dto.CandidateDto;
-import tht.closure.operator.model.entity.Candidate;
+import r21.closure.operator.model.dto.CandidateDto;
+import r21.closure.operator.model.entity.Candidate;
 
 public class CandidateMapper {
 

@@ -1,14 +1,14 @@
-package tht.closure.operator.validator;
+package r21.closure.operator.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import tht.closure.operator.model.entity.User;
-import tht.closure.operator.model.exception.user.EmailHaveAlreadyExistException;
-import tht.closure.operator.model.exception.user.EmailNotFoundException;
-import tht.closure.operator.model.exception.user.RoleNotSupportException;
-import tht.closure.operator.model.exception.user.UsernameHaveAlreadyExistException;
-import tht.closure.operator.repository.UserRepository;
-import tht.closure.operator.security.dto.RegisterRequestDto;
+import r21.closure.operator.model.entity.User;
+import r21.closure.operator.model.exception.user.EmailHaveAlreadyExistException;
+import r21.closure.operator.model.exception.user.EmailNotFoundException;
+import r21.closure.operator.model.exception.user.RoleNotSupportException;
+import r21.closure.operator.model.exception.user.UsernameHaveAlreadyExistException;
+import r21.closure.operator.repository.UserRepository;
+import r21.closure.operator.security.dto.RegisterRequestDto;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
-package tht.closure.operator.service;
+package r21.closure.operator.service;
 
-import tht.closure.operator.model.dto.UserDto;
-import tht.closure.operator.security.dto.JwtResponse;
-import tht.closure.operator.security.dto.LoginRequestDto;
-import tht.closure.operator.security.dto.RegisterRequestDto;
+import r21.closure.operator.model.dto.UserDto;
+import r21.closure.operator.security.dto.JwtResponse;
+import r21.closure.operator.security.dto.LoginRequestDto;
+import r21.closure.operator.security.dto.RegisterRequestDto;
 
 import javax.servlet.http.HttpServletRequest;
 

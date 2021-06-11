@@ -1,4 +1,4 @@
-package tht.closure.operator.controller;
+package r21.closure.operator.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import tht.closure.operator.model.dto.RecruitmentDto;
-import tht.closure.operator.model.entity.Recruitment;
-import tht.closure.operator.service.RecruitmentService;
+import r21.closure.operator.model.dto.RecruitmentDto;
+import r21.closure.operator.model.entity.Recruitment;
+import r21.closure.operator.service.RecruitmentService;
 
 import java.util.ArrayList;
 import java.util.Arrays;

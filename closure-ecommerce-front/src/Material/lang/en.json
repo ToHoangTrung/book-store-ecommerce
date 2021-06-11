@@ -1,48 +1,64 @@
 {
   "header" : {
-    "home": "Home",
-    "it-job": "All Jobs",
-    "it-company": "IT Companies",
-    "blog": "Blog",
-    "logout": "Log out",
-    "login": "Log in",
-    "recruiter": "Become Recruiter"
+    "search": "Search entire store here...",
+    "cart": "MY CART",
+    "notification": "NOTIFICATION",
+    "login": "LOGIN",
+    "category": "Category"
   },
-  "recruitment-search": {
-    "placeholder": {
-      "keyword": "Keyword",
-      "location": "Location",
-      "position": "Position",
-      "type": "Job type",
-      "experience": "Experience",
-      "sub_catalog": "Category",
-      "salary": "Salary"
+  "book-introduce": {
+    "publisher": "Supplier",
+    "author": "Author",
+    "quantity": "Quantity",
+    "add-to-cart": "Add to cart",
+    "buy-now": "Buy Now",
+    "total": "Total"
+  },
+  "checkout": {
+    "headline": "Cart",
+    "rough": "Rough",
+    "total": "Total",
+    "discount": "Discount",
+    "checkout": "Checkout",
+    "shipping": "Shipping"
+  },
+  "payment": {
+    "headline": "Payment",
+    "type": {
+      "cash": "Cash payment on delivery"
     },
-    "search": "Search Now",
-    "reset": "Reset search"
+    "order": {
+      "order": "Order",
+      "product": "product",
+      "more-info": "More Info"
+    },
+    "address": "Address",
+    "phone": "Phone",
+    "edit": "Edit"
   },
-  "recruitment-sort": {
-    "headline": "Jobs Found",
-    "label": "Sort by",
-    "placeholder": {
-      "date": ""
+  "order": {
+    "headline": "My Order",
+    "table": {
+      "code": "Order code",
+      "order-date": "Order day",
+      "product": "Product",
+      "total": "Total",
+      "status": "Status"
     }
   },
-  "recruitment-card": {
-    "apply": "Apply Now",
-    "save": "Save Job",
-    "job-description": "Job Description",
-    "requirement": "Your Skills and Experience",
-    "benefit": "Why You'll Love Working Here",
-    "information": "Recruitment Information"
-  },
-  "recruiter-card": {
-    "followBtn": "Follow",
-    "reviewBtn": "Write a review",
-    "jobTab": "Jobs",
-    "reviewTab": "Reviews",
-    "overviewTab": "Overview",
-    "overviewContent": "Overview about"
+  "order-detail": {
+    "headline": "Order detail",
+    "address": "Address",
+    "phone": "Phone",
+    "delivery": "Delivery",
+    "payment": "Payment",
+    "products": {
+      "name": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "discount": "Discount",
+      "rough": "Rough"
+    }
   },
   "login-form": {
     "placeholder": {
