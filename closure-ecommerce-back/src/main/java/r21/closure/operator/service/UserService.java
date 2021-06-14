@@ -7,7 +7,7 @@ import r21.closure.operator.security.dto.RegisterRequestDto;
 
 import javax.servlet.http.HttpServletRequest;
 
-public interface AuthService {
+public interface UserService {
 
     void userRegister(RegisterRequestDto registerDto);
 

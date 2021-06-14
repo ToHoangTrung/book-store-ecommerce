@@ -1,6 +1,6 @@
 package r21.closure.operator.model.exception.config;
 
-public class ItJobBoardExceptionErrorCode {
+public class ClosureEcommerceErrorCode {
 
     //main base error code
     public static final String RESOURCE_NOT_FOUND_EXCEPTION = "EX-MAIN-RESOURCE-NOT-FOUND";

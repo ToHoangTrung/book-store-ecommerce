@@ -9,12 +9,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import r21.closure.operator.model.dto.UserDto;
-import r21.closure.operator.model.entity.Candidate;
-import r21.closure.operator.model.entity.Recruiter;
 import r21.closure.operator.model.entity.User;
 import r21.closure.operator.model.exception.user.PasswordNotCorrectException;
-import r21.closure.operator.repository.CandidateRepository;
-import r21.closure.operator.repository.RecruiterRepository;
 import r21.closure.operator.repository.UserRepository;
 import r21.closure.operator.security.dto.JwtResponse;
 import r21.closure.operator.security.dto.LoginRequestDto;
@@ -22,27 +18,21 @@ import r21.closure.operator.security.dto.RegisterRequestDto;
 import r21.closure.operator.security.jwt.AuthTokenFilter;
 import r21.closure.operator.security.jwt.JwtUtils;
 import r21.closure.operator.security.service.UserDetailsImpl;
-import r21.closure.operator.service.AuthService;
-import r21.closure.operator.validator.AuthValidator;
+import r21.closure.operator.service.UserService;
+import r21.closure.operator.validator.UserValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class AuthServiceImpl implements AuthService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
-    private CandidateRepository candidateRepository;
-
-    @Autowired
-    private RecruiterRepository recruiterRepository;
-
-    @Autowired
-    private AuthValidator authValidator;
+    private UserValidator userValidator;
 
     @Autowired
     PasswordEncoder encoder;
@@ -58,23 +48,14 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void userRegister(RegisterRequestDto registerDto) {
-        authValidator.validateRegisterRequest(registerDto);
+        userValidator.validateRegisterRequest(registerDto);
         User user = new User(registerDto.getUsername(), registerDto.getEmail(), encoder.encode(registerDto.getPassword()), registerDto.getRole());
         userRepository.save(user);
-        if (registerDto.getRole().equals("CAN")) {
-            Candidate candidate = new Candidate();
-            candidate.setUser(user);
-            candidateRepository.save(candidate);
-        } else {
-            Recruiter recruiter = new Recruiter();
-            recruiter.setUser(user);
-            recruiterRepository.save(recruiter);
-        }
     }
 
     @Override
     public JwtResponse userLogin(LoginRequestDto loginRequestDto) {
-        User user = authValidator.getUserIfExist(loginRequestDto.getEmail());
+        User user = userValidator.getUserIfExist(loginRequestDto.getEmail());
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(user.getUsername(), loginRequestDto.getPassword()));

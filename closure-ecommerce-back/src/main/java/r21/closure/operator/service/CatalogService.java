@@ -1,7 +1,6 @@
 package r21.closure.operator.service;
 
 import r21.closure.operator.model.dto.CatalogDto;
-import r21.closure.operator.model.dto.SubCatalogDto;
 
 import java.util.List;
 

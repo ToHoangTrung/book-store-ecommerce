@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import r21.closure.operator.model.dto.CatalogDto;
-import r21.closure.operator.model.dto.SubCatalogDto;
 import r21.closure.operator.service.CatalogService;
 
 import java.util.List;

@@ -10,16 +10,16 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ItJobBoardException extends RuntimeException{
+public class ClosureEcommerceException extends RuntimeException{
 
     private final ExceptionResponse exceptionResponse;
 
-    public ItJobBoardException(String errorMessage, String errorCode, HttpStatus httpStatus){
+    public ClosureEcommerceException(String errorMessage, String errorCode, HttpStatus httpStatus){
         super(errorMessage);
         exceptionResponse = new ExceptionResponse(errorMessage, errorCode, httpStatus, new ArrayList<>());
     }
 
-    public ItJobBoardException(String errorMessage, String errorCode, HttpStatus httpStatus, List<String> errors){
+    public ClosureEcommerceException(String errorMessage, String errorCode, HttpStatus httpStatus, List<String> errors){
         super(errorMessage);
         exceptionResponse = new ExceptionResponse(errorMessage, errorCode, httpStatus, errors);
     }

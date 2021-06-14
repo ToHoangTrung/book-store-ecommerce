@@ -4,12 +4,9 @@ import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import r21.closure.operator.model.dto.CatalogDto;
-import r21.closure.operator.model.dto.SubCatalogDto;
 import r21.closure.operator.model.entity.Catalog;
 import r21.closure.operator.model.entity.QCatalog;
-import r21.closure.operator.model.entity.SubCatalog;
 import r21.closure.operator.repository.CatalogRepository;
-import r21.closure.operator.repository.SubCatalogRepository;
 import r21.closure.operator.service.CatalogService;
 import r21.closure.operator.util.CatalogMapper;
 

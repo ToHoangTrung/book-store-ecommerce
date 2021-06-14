@@ -7,25 +7,25 @@ import org.springframework.web.bind.annotation.*;
 import r21.closure.operator.security.dto.JwtResponse;
 import r21.closure.operator.security.dto.LoginRequestDto;
 import r21.closure.operator.security.dto.RegisterRequestDto;
-import r21.closure.operator.service.AuthService;
+import r21.closure.operator.service.UserService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
-public class AuthController extends AbstractController{
+public class UserController extends AbstractController{
 
     @Autowired
-    private AuthService authService;
+    private UserService userService;
 
     @PostMapping("/register")
     public ResponseEntity<Object> userRegister(@RequestBody RegisterRequestDto registerRequestDto)  {
-        authService.userRegister(registerRequestDto);
+        userService.userRegister(registerRequestDto);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("User registered successfully");
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody LoginRequestDto loginRequestDto) {
-        JwtResponse jwtResponse = authService.userLogin(loginRequestDto);
+    public ResponseEntity<Object> userLogin(@RequestBody LoginRequestDto loginRequestDto) {
+        JwtResponse jwtResponse = userService.userLogin(loginRequestDto);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(jwtResponse);
     }
 }

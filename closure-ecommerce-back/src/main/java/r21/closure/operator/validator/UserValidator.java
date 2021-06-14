@@ -13,7 +13,7 @@ import r21.closure.operator.security.dto.RegisterRequestDto;
 import java.util.List;
 
 @Component
-public class AuthValidator {
+public class UserValidator {
 
     @Autowired
     private UserRepository userRepository;
