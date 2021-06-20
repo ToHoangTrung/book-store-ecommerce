@@ -1,11 +1,11 @@
 package r21.closure.operator.util;
 
 import r21.closure.operator.model.dto.UserDto;
-import r21.closure.operator.model.entity.User;
+import r21.closure.operator.model.entity.mysql.MySqlUser;
 
 public class UserMapper {
 
-    public static UserDto userToUserDtoNoRelationShip(User entity) {
+    public static UserDto userToUserDtoNoRelationShip(MySqlUser entity) {
         UserDto dto = new UserDto();
         dto.setId(entity.getId());
         dto.setEmail(entity.getEmail());
@@ -15,13 +15,13 @@ public class UserMapper {
         return dto;
     }
 
-    public static UserDto userToUserDto(User entity) {
+    public static UserDto userToUserDto(MySqlUser entity) {
         UserDto dto = userToUserDtoNoRelationShip(entity);
         return dto;
     }
-    
-    public static User userDtoToUser(UserDto dto) {
-        User entity = new User();
+
+    public static MySqlUser userDtoToUser(UserDto dto) {
+        MySqlUser entity = new MySqlUser();
         entity.setId(dto.getId());
         entity.setUsername(dto.getUsername());
         entity.setPhone(dto.getPhone());

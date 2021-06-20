@@ -3,7 +3,7 @@ package r21.closure.operator.security.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
-import r21.closure.operator.model.entity.User;
+import r21.closure.operator.model.entity.mysql.MySqlUser;
 import r21.closure.operator.model.exception.main.ResourceNotFoundException;
 import r21.closure.operator.repository.UserRepository;
 
@@ -18,7 +18,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional
     public UserDetailsImpl loadUserByUsername(String username) throws ResourceNotFoundException {
-        User user = userRepository.findByUsername(username);
+        MySqlUser user = userRepository.findByUsername(username);
         if (user == null) {
             throw new ResourceNotFoundException(String.format("This username: '%s' does not exist", username));
         }

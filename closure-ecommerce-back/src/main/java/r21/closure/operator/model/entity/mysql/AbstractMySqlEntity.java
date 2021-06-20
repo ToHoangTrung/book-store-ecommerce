@@ -1,4 +1,4 @@
-package r21.closure.operator.model.entity;
+package r21.closure.operator.model.entity.mysql;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class AbstractEntity implements Serializable{
+public abstract class AbstractMySqlEntity implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

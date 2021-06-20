@@ -12,5 +12,4 @@ public class CatalogDto extends AbstractDto{
 
     private String name;
 
-    private List<SubCatalogDto> subCatalogs = new ArrayList<>();
 }

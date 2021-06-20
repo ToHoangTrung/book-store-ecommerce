@@ -1,17 +1,17 @@
 package r21.closure.operator.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.stereotype.Repository;
-import r21.closure.operator.model.entity.User;
-
-import java.util.Optional;
+import r21.closure.operator.model.entity.mysql.MySqlUser;
+import r21.closure.operator.model.entity.neo4j.Neo4jCustomer;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<MySqlUser, Long>{
 
-    User findByUsername(String username);
+    MySqlUser findByUsername(String username);
 
-    User findByEmail(String email);
+    MySqlUser findByEmail(String email);
 
     boolean existsByUsername(String username);
 

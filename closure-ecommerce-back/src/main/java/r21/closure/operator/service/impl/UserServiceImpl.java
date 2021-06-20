@@ -9,7 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import r21.closure.operator.model.dto.UserDto;
-import r21.closure.operator.model.entity.User;
+import r21.closure.operator.model.entity.mysql.MySqlUser;
 import r21.closure.operator.model.exception.user.PasswordNotCorrectException;
 import r21.closure.operator.repository.UserRepository;
 import r21.closure.operator.security.dto.JwtResponse;
@@ -49,13 +49,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void userRegister(RegisterRequestDto registerDto) {
         userValidator.validateRegisterRequest(registerDto);
-        User user = new User(registerDto.getUsername(), registerDto.getEmail(), encoder.encode(registerDto.getPassword()), registerDto.getRole());
+        MySqlUser user = new MySqlUser(registerDto.getUsername(), registerDto.getEmail(), encoder.encode(registerDto.getPassword()), registerDto.getRole());
         userRepository.save(user);
     }
 
     @Override
     public JwtResponse userLogin(LoginRequestDto loginRequestDto) {
-        User user = userValidator.getUserIfExist(loginRequestDto.getEmail());
+        MySqlUser user = userValidator.getUserIfExist(loginRequestDto.getEmail());
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(user.getUsername(), loginRequestDto.getPassword()));
