@@ -13,5 +13,5 @@ public interface UserService {
 
     JwtResponse userLogin(LoginRequestDto loginRequestDto);
 
-    UserDto getUserFromJwt(HttpServletRequest request);
+    UserDto getUserInfoFromJwt(HttpServletRequest request);
 }

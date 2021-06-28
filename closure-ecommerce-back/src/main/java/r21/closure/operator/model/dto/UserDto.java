@@ -20,7 +20,7 @@ public class UserDto extends AbstractDto{
     @NotNull
     private String password;
 
-    private String phone;
+    private String role;
 
     public UserDto(String username, String password, String email){
         this.username = username;

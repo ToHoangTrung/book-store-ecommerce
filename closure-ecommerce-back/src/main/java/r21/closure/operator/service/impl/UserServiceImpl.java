@@ -9,9 +9,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import r21.closure.operator.model.dto.UserDto;
+import r21.closure.operator.model.entity.mysql.MySqlCustomer;
 import r21.closure.operator.model.entity.mysql.MySqlUser;
-import r21.closure.operator.model.exception.user.PasswordNotCorrectException;
-import r21.closure.operator.repository.UserRepository;
+import r21.closure.operator.model.exception.side.user.PasswordNotCorrectException;
+import r21.closure.operator.repository.mysql.MySqlCustomerRepository;
+import r21.closure.operator.repository.mysql.MySqlUserRepository;
 import r21.closure.operator.security.dto.JwtResponse;
 import r21.closure.operator.security.dto.LoginRequestDto;
 import r21.closure.operator.security.dto.RegisterRequestDto;
@@ -19,6 +21,7 @@ import r21.closure.operator.security.jwt.AuthTokenFilter;
 import r21.closure.operator.security.jwt.JwtUtils;
 import r21.closure.operator.security.service.UserDetailsImpl;
 import r21.closure.operator.service.UserService;
+import r21.closure.operator.util.UserMapper;
 import r21.closure.operator.validator.UserValidator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +32,10 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private MySqlUserRepository mySqlUserRepository;
+
+    @Autowired
+    private MySqlCustomerRepository mySqlCustomerRepository;
 
     @Autowired
     private UserValidator userValidator;
@@ -44,18 +50,23 @@ public class UserServiceImpl implements UserService {
     private JwtUtils jwtUtils;
 
     @Autowired
-    private AuthTokenFilter aur21okenFilter;
+    private AuthTokenFilter authTokenFilter;
 
     @Override
     public void userRegister(RegisterRequestDto registerDto) {
         userValidator.validateRegisterRequest(registerDto);
         MySqlUser user = new MySqlUser(registerDto.getUsername(), registerDto.getEmail(), encoder.encode(registerDto.getPassword()), registerDto.getRole());
-        userRepository.save(user);
+        user = mySqlUserRepository.save(user);
+        if (user.getRole().equals(MySqlUser.Role.ROLE_CUSTOMER)) {
+            MySqlCustomer customer = new MySqlCustomer();
+            customer.setUser(user);
+            mySqlCustomerRepository.save(customer);
+        }
     }
 
     @Override
     public JwtResponse userLogin(LoginRequestDto loginRequestDto) {
-        MySqlUser user = userValidator.getUserIfExist(loginRequestDto.getEmail());
+        MySqlUser user = userValidator.getUserIfExistByEmail(loginRequestDto.getEmail());
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(user.getUsername(), loginRequestDto.getPassword()));
@@ -72,7 +83,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto getUserFromJwt(HttpServletRequest request) {
+    public UserDto getUserInfoFromJwt(HttpServletRequest request) {
+        String token = authTokenFilter.parseJwt(request);
+        if (token != null) {
+            String username = jwtUtils.getUserNameFromJwtToken(token);
+            MySqlUser user = userValidator.getUserIfExistByUsername(username);
+            return UserMapper.userToUserDto(user);
+        }
         return null;
     }
 }

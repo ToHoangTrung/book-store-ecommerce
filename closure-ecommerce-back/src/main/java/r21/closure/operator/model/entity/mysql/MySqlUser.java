@@ -13,28 +13,17 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "user")
 @Getter
 @Setter
 public class MySqlUser extends AbstractMySqlEntity{
-
-    private String name;
-
-    private String phone;
-
-    private String email;
-
-    private String cmnd;
-
-    private LocalDate birthday;
 
     private String username;
 
     @JsonIgnore
     private String password;
 
-    @OneToMany(mappedBy = "user")
-    private Set<MysqlAddress> addresses = new HashSet<>();
+    private String email;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -44,7 +33,7 @@ public class MySqlUser extends AbstractMySqlEntity{
     }
 
     public enum Role {
-        ROLE_USER("User"),
+        ROLE_CUSTOMER("Customer"),
         ROLE_ADMIN("Admin");
 
         public final String label;

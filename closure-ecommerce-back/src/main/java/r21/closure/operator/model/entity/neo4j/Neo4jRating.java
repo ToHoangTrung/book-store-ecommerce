@@ -7,18 +7,21 @@ import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 
 @JsonIdentityInfo(generator = JSOGGenerator.class)
-@RelationshipEntity(type = "ACTED_IN")
+@RelationshipEntity(type = "RATING")
 @Getter
 @Setter
 public class Neo4jRating extends AbstractNeo4jEntity{
 
+    @Property
     private String score;
 
+    @Property
     private String comment;
 
     @StartNode
-    private Neo4jCustomer user;
+    private Neo4jCustomer customer;
 
     @EndNode
     private Neo4jProduct product;
+
 }

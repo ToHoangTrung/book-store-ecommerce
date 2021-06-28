@@ -2,18 +2,20 @@ package r21.closure.operator.model.entity.mongo;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
-import java.time.Year;
-
-@Document(collection = "product")
+@Document(collection = "products")
 @Getter
 @Setter
 public class MongoProduct {
 
-    @Id
-    private String id;
+    @MongoId(FieldType.OBJECT_ID)
+    private String objectId;
+
+    private Long id;
 
     private Integer sku;
 
@@ -27,10 +29,14 @@ public class MongoProduct {
 
     private String thumbnail;
 
+    @Field("inventory_status")
     private String inventoryStatus;
 
     private String author;
 
-    private Year publishYear;
+    @Field("publish_year")
+    private String publishYear;
 
+    @Field("catalog")
+    private MongoCatalog catalog;
 }

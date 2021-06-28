@@ -4,11 +4,15 @@ import {useTranslation, withTranslation} from "react-i18next";
 import {makeStyles} from "@material-ui/core";
 import {DefaultTheme} from '../../../theme';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
-import {useForm} from "react-hook-form";
 import Button from "@material-ui/core/Button";
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+import {useSelector} from "react-redux";
+import {getCurrentUser} from "../../Feature/UserSlice";
+import {useForm} from "react-hook-form";
+
 
 const Header = () => {
 
@@ -98,16 +102,18 @@ const Header = () => {
     const [t, i18n] = useTranslation('common');
     const classes = useStyles();
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-
-    const onSubmit = (data) => {
-        console.log(data)
-    }
-
     const handleChangeLanguage = (lan) => {
         console.log(i18n)
         i18n.changeLanguage(lan);
         localStorage.setItem('lan', lan);
+    }
+
+    const currentUser = useSelector(getCurrentUser)
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit = (data) => {
+        console.log(data)
     }
 
     return (
@@ -136,8 +142,17 @@ const Header = () => {
                             <p>{t('header.cart')}</p></Nav.Link>
                     </Col>
                     <Col xl={1}>
-                        <Nav.Link href={"/login"} className={classes.icon}><ExitToAppOutlinedIcon/>
-                            <p>{t('header.login')}</p></Nav.Link>
+                        {
+                            currentUser.id !== undefined ? (
+                                <Nav.Link href={"/login"} className={classes.icon}><ExitToAppOutlinedIcon/>
+                                    <p>{t('header.login')}</p></Nav.Link>
+                            ) : (
+                                <Nav.Link to={"#"} className={classes.icon}><PersonOutlineOutlinedIcon/>
+                                    <p>{t('header.account')}</p>
+                                </Nav.Link>
+                            )
+                        }
+
                     </Col>
                     <Col xl={1}></Col>
                 </Row>

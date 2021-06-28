@@ -4,6 +4,7 @@
     "cart": "MY CART",
     "notification": "NOTIFICATION",
     "login": "LOGIN",
+    "account": "ACCOUNT",
     "category": "Category"
   },
   "book-introduce": {
@@ -80,6 +81,9 @@
       "change-to-register": "Doesn't have an account, create one here",
       "change-to-login": "Already have an account, login here"
     }
+  },
+  "product-list": {
+    "headline": "Top favorite books in week"
   }
 }
 

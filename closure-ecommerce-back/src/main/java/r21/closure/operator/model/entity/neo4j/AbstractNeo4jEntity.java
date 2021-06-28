@@ -14,5 +14,5 @@ public abstract class AbstractNeo4jEntity {
 
     @Id
     @GeneratedValue
-    Long id;
+    private Long id;
 }

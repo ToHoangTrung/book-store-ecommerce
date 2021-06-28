@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import r21.closure.operator.model.entity.mysql.MySqlUser;
-import r21.closure.operator.model.exception.main.ResourceNotFoundException;
-import r21.closure.operator.repository.UserRepository;
+import r21.closure.operator.model.exception.main.ClosureEntityNotFoundException;
+import r21.closure.operator.repository.mysql.MySqlUserRepository;
 
 import javax.transaction.Transactional;
 
@@ -13,14 +13,14 @@ import javax.transaction.Transactional;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    UserRepository userRepository;
+    MySqlUserRepository mySqlUserRepository;
 
     @Override
     @Transactional
-    public UserDetailsImpl loadUserByUsername(String username) throws ResourceNotFoundException {
-        MySqlUser user = userRepository.findByUsername(username);
+    public UserDetailsImpl loadUserByUsername(String username) throws ClosureEntityNotFoundException {
+        MySqlUser user = mySqlUserRepository.findByUsername(username);
         if (user == null) {
-            throw new ResourceNotFoundException(String.format("This username: '%s' does not exist", username));
+            throw new ClosureEntityNotFoundException(String.format("This username: '%s' does not exist", username));
         }
         return UserDetailsImpl.build(user);
     }

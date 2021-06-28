@@ -14,7 +14,11 @@ export const DefaultTheme = {
     gray7: '#8c8c8c',
     gray8: '#595959',
     gray9: '#434343',
-    gray10: '#262626'
+    gray10: '#262626',
+    gray11: '#1f1f1f',
+    gray12: '#141414',
+    gray13: '#000000',
+    gray14: '#221F20',
 }
 
 export const DayBreakBlue = {
@@ -28,6 +32,28 @@ export const DayBreakBlue = {
     color8: '#0050b3',
 }
 
+export const VolcanoTheme = {
+    color6: '#fa541c',
+    color7: '#d4380d',
+}
+
+export const NeutralGrayTheme = {
+    gray1: '#ffffff',
+    gray2: '#fafafa',
+    gray3: '#f5f5f5',
+    gray4: '#f0f0f0',
+    gray5: '#d9d9d9',
+    gray6: '#bfbfbf',
+    gray7: '#8c8c8c',
+    gray8: '#595959',
+    gray9: '#434343',
+    gray10: '#262626',
+    gray11: '#1f1f1f',
+    gray12: '#141414',
+    gray13: '#000000',
+    gray14: '#221F20',
+}
+
 export const PolarGreenTheme = {
     color1: '#f6ffed',
     color2: '#d9f7be',
@@ -39,9 +65,4 @@ export const PolarGreenTheme = {
     color8: '#237804',
     color9: '#135200',
     color10: '#092b00'
-}
-
-export const VolcanoTheme = {
-    color6: '#fa541c',
-    color7: '#d4380d',
 }

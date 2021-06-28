@@ -19,8 +19,6 @@ public abstract class AbstractMySqlEntity implements Serializable{
 
     @Version
     @ColumnDefault("0")
-    @Column
-    @NotNull
-    private Long version;
+    private Long version = 0L;
 
 }
