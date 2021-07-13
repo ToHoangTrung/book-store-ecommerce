@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Col, Container, Row} from 'react-bootstrap';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
 import Header from '../Component/Candidate/Header';
@@ -6,15 +6,18 @@ import {makeStyles} from "@material-ui/core";
 import '../Style/MainPage.scss'
 import LoginRegisterPage from "./User/LoginRegisterPage";
 import CartPage from "./User/CartPage";
-import PaymentPage from "./User/PaymentPage";
-import OrderPage from "./User/OrderPage";
-import OrderDetailPage from "./User/OrderDetailPage";
+import PaymentCheckoutPage from "./User/PaymentCheckoutPage";
 import ProductDetailPage from "./User/ProductDetailPage";
 import ProductListPage from "./User/ProductListPage";
+import {unwrapResult} from "@reduxjs/toolkit";
+import {userGetInfo} from "../Feature/UserSlice";
+import {useDispatch} from "react-redux";
+import PaymentHistoryPage from "./User/PaymentHistoryPage";
+import PaymentDetailPage from "./User/PaymentDetailPage";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        marginBottom: 100
+        marginBottom: 200
     },
     main: {
         background: '#FBFBFB'
@@ -28,6 +31,14 @@ const useStyles = makeStyles((theme) => ({
 const MainPage = () => {
 
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            unwrapResult(await dispatch(userGetInfo()))
+        }
+        fetchUserInfo();
+    }, []);
 
     return (
         <div className={classes.root}>
@@ -46,10 +57,10 @@ const MainPage = () => {
                             <div style={{margin: '30px auto'}}>
                                 <Route path="/products/catalog/:catalogId" component={ProductListPage} exact/>
                                 <Route path="/checkout/cart" component={CartPage} exact/>
-                                <Route path="/checkout/payment" component={PaymentPage} exact/>
+                                <Route path="/checkout/payment" component={PaymentCheckoutPage} exact/>
                                 <Route path="/products/:productId" component={ProductDetailPage} exact/>
-                                <Route path="/order/history" component={OrderPage}/>
-                                <Route path="/order/view/:orderId" component={OrderDetailPage}/>
+                                <Route path="/order/history" component={PaymentHistoryPage}/>
+                                <Route path="/order/detail/:paymentId" component={PaymentDetailPage}/>
                                 <Route path="/login" component={LoginRegisterPage}/>
                             </div>
                         </Col>

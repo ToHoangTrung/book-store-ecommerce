@@ -1,17 +1,29 @@
 import {Divider, makeStyles} from "@material-ui/core";
-import {DefaultTheme, PolarGreenTheme, VolcanoTheme} from "../../../theme";
+import {DayBreakBlue, DefaultTheme, NeutralGrayTheme, PolarGreenTheme, VolcanoTheme} from "../../../theme";
 import {useTranslation} from "react-i18next";
 import {Col, Container, Row} from "react-bootstrap";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Button from "@material-ui/core/Button";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import '../../Style/MainPage.scss'
+import {useDispatch} from "react-redux";
+import {userGetInfo} from "../../Feature/UserSlice";
+import {unwrapResult} from "@reduxjs/toolkit";
+import {createOrUpdateUserCart, deleteUserCartProduct, fetchUserCart} from "../../Feature/CartSlice";
 
-const BookList = ({books}) => {
+const CartProducts = (props) => {
+
+    const {
+        cartProducts,
+        onDeleteCartProduct,
+        onModifyProductAmount,
+    } = props
+
     const useStyles = makeStyles((theme) => ({
         root: {
-            borderBottom: `1px solid ${DefaultTheme.gray5}`
+            borderBottom: `1px solid ${DefaultTheme.gray5}`,
         },
         logo: {
             display: 'flex',
@@ -20,6 +32,7 @@ const BookList = ({books}) => {
             height: '100%',
             '& img': {
                 width: '75%',
+                height: 150,
             },
             '& p': {
                 width: '20%',
@@ -33,7 +46,7 @@ const BookList = ({books}) => {
         },
         name: {
             fontWeight: 'bold',
-            paddingBottom: 16,
+            fontSize: 20,
             cursor: "pointer",
             transition: '0.3s',
             "&:hover":{
@@ -61,44 +74,57 @@ const BookList = ({books}) => {
         },
     }));
 
-    const [t, i18n] = useTranslation('common');
+    const [t] = useTranslation('common');
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <Row noGutters>
-                <Col sm={2}>
-                    <div className={classes.logo}>
-                        <p><HighlightOffIcon/></p>
-                        <img src={"https://cdn0.fahasa.com/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/i/m/image_225628.jpg"}/>
+            {
+                cartProducts.map((cartProduct, index) => (
+                    <div key={index} style={{padding: '12px 0', borderBottom: `1px solid ${NeutralGrayTheme.gray5}`}}>
+                        <Row noGutters>
+                            <Col sm={2}>
+                                <div className={classes.logo}>
+                                    <p onClick={() => onDeleteCartProduct(cartProduct.product.id)}><HighlightOffIcon/></p>
+                                    <img src={cartProduct.product.thumbnail}/>
+                                </div>
+                            </Col>
+                            <Col sm={8}>
+                                <div style={{padding: '0 32px', gridRowGap: 16, fontSize: 18, display: 'flex', flexDirection: 'column'}}>
+                                    <p className={classes.name}>{cartProduct.product.name}</p>
+                                    <p style={{color: VolcanoTheme.color6, fontWeight: 'bold'}}>{cartProduct.product.price} đ</p>
+                                    <p style={{color: DefaultTheme.gray7, fontSize: 16, textDecoration: 'line-through'}}>{cartProduct.product.price + cartProduct.product.discount} đ</p>
+                                </div>
+                            </Col>
+                            <Col sm={2}>
+                                <div className={classes.quantity}>
+                                    <div className={classes.addRemove}>
+                                        <Button onClick={() => {
+                                            if(cartProduct.amount > 1) onModifyProductAmount(cartProduct.id, -1)
+                                        }}><RemoveIcon/></Button>
+                                        <p style={{display: 'flex', alignItems: 'center', fontSize: 16, width: 35, justifyContent: 'center'}}>{cartProduct.amount}</p>
+                                        <Button onClick={() => onModifyProductAmount(cartProduct.id,  1)}><AddIcon/></Button>
+                                    </div>
+                                    <div style={{textAlign: 'center'}}>
+                                        <p style={{paddingBottom: 8}}>{t('cart-page.total')}</p>
+                                        <p style={{color: VolcanoTheme.color6, fontWeight: 'bold'}}>{cartProduct.product.price * cartProduct.amount} đ</p>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
                     </div>
-                </Col>
-                <Col sm={8}>
-                    <div style={{padding: 16, gridRowGap: 16, fontSize: 16,}}>
-                        <p className={classes.name}>Robot Nắp Chai Colamaru Phượng Hoàng - Bottleman 172765</p>
-                        <p style={{color: VolcanoTheme.color6, fontWeight: 'bold'}}>188.000 đ</p>
-                        <p style={{color: DefaultTheme.gray7, fontSize: 14, textDecoration: 'line-through'}}>199.000 đ</p>
-                    </div>
-                </Col>
-                <Col sm={2}>
-                    <div className={classes.quantity}>
-                        <div className={classes.addRemove}>
-                            <Button><RemoveIcon/></Button>
-                            <p style={{display: 'flex', alignItems: 'center', fontSize: 16, width: 35, justifyContent: 'center'}}>1</p>
-                            <Button><AddIcon/></Button>
-                        </div>
-                        <div style={{textAlign: 'center'}}>
-                            <p style={{paddingBottom: 8}}>{t('book-introduce.total')}</p>
-                            <p style={{color: VolcanoTheme.color6, fontWeight: 'bold'}}>195.020 đ</p>
-                        </div>
-                    </div>
-                </Col>
-            </Row>
+                ))
+            }
+
         </div>
     )
 }
 
-const Checkout = () => {
+const Checkout = (props) => {
+
+    const {
+        total,
+    } = props
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -131,31 +157,30 @@ const Checkout = () => {
         }
     }))
 
-    const [t, i18n] = useTranslation('common');
+    const [t] = useTranslation('common');
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
             <div className={classes.checkout}>
                 <p className={classes.info}>
-                    <span>{t('checkout.rough')}</span>
-                    <span>780.000 đ</span>
+                    <span>{t('cart-page.rough')}</span>
+                    <span>{total.totalPrice} đ</span>
                 </p>
                 <p className={classes.info}>
-                    <span>{t('checkout.discount')}</span>
-                    <span>0 đ</span>
+                    <span>{t('cart-page.discount')}</span>
+                    <span>{total.totalDiscount} đ</span>
                 </p>
                 <Divider style={{margin: '0 -24px'}}/>
                 <p className={classes.info}>
-                    <span>{t('checkout.total')}</span>
-                    <span style={{color: VolcanoTheme.color6, fontSize: 24, fontWeight: 'bold'}}>780.000 đ</span>
+                    <span>{t('cart-page.total')}</span>
+                    <span style={{color: VolcanoTheme.color6, fontSize: 24, fontWeight: 'bold'}}>{total.totalPrice - total.totalDiscount} đ</span>
                 </p>
-                <Button href={"/checkout/payment"}>{t('checkout.checkout')}</Button>
+                <Button href={"/checkout/payment"}>{t('cart-page.checkout')}</Button>
             </div>
         </div>
     )
 }
-
 
 const CartPage = () => {
 
@@ -175,37 +200,107 @@ const CartPage = () => {
         headline: {
             fontSize: 32,
             fontWeight: 'bold',
+        },
+        notification: {
+            background: VolcanoTheme.color6,
+            padding: 32,
+            borderRadius: 5,
+            '& p': {
+                textAlign: 'center',
+                color: 'white',
+                fontWeight: 'bold',
+                fontSize: 30,
+            }
         }
     }));
 
-    const [t, i18n] = useTranslation('common');
+    const [t] = useTranslation('common');
     const classes = useStyles();
+    const dispatch = useDispatch();
 
+    const [cartProducts, setCartProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [refresh, setRefresh] = useState(false);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const result = unwrapResult(await dispatch(fetchUserCart()));
+            setCartProducts(result);
+            setIsLoading(false);
+        }
+        fetchProducts();
+    }, [refresh]);
+
+    const getTotalPriceAndDiscount = () => {
+        let totalPrice = 0;
+        let totalDiscount = 0;
+        cartProducts.map((cartProduct) => {
+            totalPrice += cartProduct.product.price * cartProduct.amount;
+            totalDiscount += cartProduct.product.discount * cartProduct.amount;
+        });
+        return {totalPrice, totalDiscount};
+    }
+
+    const handleDeleteCartProduct = async (id) => {
+        unwrapResult(await dispatch(deleteUserCartProduct(id)));
+        setRefresh(!refresh);
+    }
+
+    const handleModifyCartProductAmount = async (cartProductId, amount) => {
+        cartProducts.find(x => x.id === cartProductId).amount += amount;
+        setCartProducts([...cartProducts]);
+        const result = unwrapResult(await dispatch(createOrUpdateUserCart(cartProducts)));
+        setCartProducts(result);
+    }
 
     return (
         <div className={classes.root}>
             <Container fluid>
-                <div className={classes.content}>
+                <div className={"content-list"}>
                     <Row>
                         <Col>
-                            <div className={classes.item} style={{padding: '8px 12px'}}>
-                                <p className={classes.headline}>{t('checkout.headline')}</p>
+                            <div className={"content-item"} style={{padding: '8px 12px'}}>
+                                <p className={classes.headline}>{t('cart-page.headline')}</p>
                             </div>
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm={9}>
-                            <div className={classes.item} style={{padding: 0, width: '98%'}}>
-                                <BookList/>
-                                <BookList/>
-                                <BookList/>
-                            </div>
-                        </Col>
-                        <Col sm={3}>
-                            <div className={classes.item}>
-                                <Checkout/>
-                            </div>
-                        </Col>
+                        {
+                            cartProducts.length === 0 ? (
+                                <Col>
+                                    <div className={classes.notification}>
+                                        <p>{t('cart-page.empty-cart')}</p>
+                                    </div>
+                                </Col>
+                            ) : (
+                                <>
+                                    <Col sm={9}>
+                                        <div className={"content-item"} style={{padding: 0, width: '98%'}}>
+                                            {
+                                                !isLoading && (
+                                                    <CartProducts
+                                                        cartProducts={cartProducts}
+                                                        onDeleteCartProduct={(id) => handleDeleteCartProduct(id)}
+                                                        onModifyProductAmount={(cartProductId, amount) => handleModifyCartProductAmount(cartProductId, amount)}
+                                                    />
+                                                )
+                                            }
+                                        </div>
+                                    </Col>
+                                    <Col sm={3}>
+                                        <div className={"content-item"}>
+                                            {
+                                                !isLoading && (
+                                                    <Checkout
+                                                        total={getTotalPriceAndDiscount()}
+                                                    />
+                                                )
+                                            }
+                                        </div>
+                                    </Col>
+                                </>
+                            )
+                        }
                     </Row>
                 </div>
             </Container>

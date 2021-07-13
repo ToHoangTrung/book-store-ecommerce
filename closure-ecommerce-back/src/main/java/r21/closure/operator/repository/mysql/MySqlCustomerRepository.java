@@ -6,4 +6,6 @@ import r21.closure.operator.model.entity.mysql.MySqlCustomer;
 
 @Repository
 public interface MySqlCustomerRepository extends JpaRepository<MySqlCustomer, Long> {
+
+    MySqlCustomer findByUserId(Long id);
 }

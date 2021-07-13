@@ -27,7 +27,17 @@ export const userRegister = createAsyncThunk('user/register',
 export const userGetInfo = createAsyncThunk('user/getInfo',
     async (params,{rejectWithValue}) => {
         try{
-            const response = await axiosClient.get('/api/auth/getInfo');
+            const response = await axiosClient.get('/api/auth/get-user-info');
+            return response.data;
+        } catch (err) {
+            throw new rejectWithValue(err.response.data);
+        }
+    });
+
+export const customerGetInfo = createAsyncThunk('customer/getInfo',
+    async (params,{rejectWithValue}) => {
+        try{
+            const response = await axiosClient.get('/api/auth/get-customer-info');
             return response.data;
         } catch (err) {
             throw new rejectWithValue(err.response.data);

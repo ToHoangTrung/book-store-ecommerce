@@ -98,12 +98,18 @@
             <artifactId>jackson-jsog</artifactId>
             <version>1.1.1</version>
         </dependency>
+
         <!-- End -->
 
         <!-- Redis Dependencies-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>3.6.0</version>
         </dependency>
         <!-- End -->
         <dependency>

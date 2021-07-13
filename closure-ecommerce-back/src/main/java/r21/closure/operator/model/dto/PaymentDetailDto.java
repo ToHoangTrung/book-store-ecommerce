@@ -5,12 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CartDto{
-
-    private String id;
+public class PaymentDetailDto extends AbstractDto{
 
     private ProductDto product;
 
     private Integer amount;
-
 }

@@ -13,11 +13,14 @@ public class CustomerMapper {
         dto.setBirthday(entity.getBirthday());
         dto.setName(entity.getName());
         dto.setPhone(entity.getPhone());
-        UserDto userInfo = new UserDto();
-        userInfo.setId(entity.getUser().getId());
-        userInfo.setUsername(entity.getUser().getUsername());
-        userInfo.setEmail(entity.getUser().getEmail());
-        dto.setUserInfo(userInfo);
+        if (entity.getUser() != null) {
+            UserDto userInfo = new UserDto();
+            userInfo.setId(entity.getUser().getId());
+            userInfo.setUsername(entity.getUser().getUsername());
+            userInfo.setEmail(entity.getUser().getEmail());
+            dto.setUserInfo(userInfo);
+        }
         return dto;
     }
+
 }

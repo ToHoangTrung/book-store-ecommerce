@@ -37,15 +37,6 @@ const productSlice = createSlice({
     reducers: {
     },
     extraReducers: {
-        [fetchProductsByCatalogId.fulfilled]: (state, action) => {
-            state.products = action.payload || [];
-        },
-        [fetchProductById.fulfilled]: (state, action) => {
-            state.products = action.payload || [];
-        },
-        [fetchAllProduct.fulfilled]: (state, action) => {
-            state.products = action.payload || [];
-        },
     }
 })
 

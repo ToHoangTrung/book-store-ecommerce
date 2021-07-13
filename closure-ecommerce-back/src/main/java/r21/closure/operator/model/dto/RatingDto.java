@@ -9,7 +9,7 @@ public class RatingDto extends AbstractDto{
 
     private CustomerDto customer;
 
-    private String score;
+    private Double score;
 
     private String comment;
 }

@@ -1,5 +1,6 @@
 package r21.closure.operator.service;
 
+import r21.closure.operator.model.dto.CustomerDto;
 import r21.closure.operator.model.dto.UserDto;
 import r21.closure.operator.security.dto.JwtResponse;
 import r21.closure.operator.security.dto.LoginRequestDto;
@@ -14,4 +15,6 @@ public interface UserService {
     JwtResponse userLogin(LoginRequestDto loginRequestDto);
 
     UserDto getUserInfoFromJwt(HttpServletRequest request);
+
+    CustomerDto getCustomerFromJwt(HttpServletRequest request);
 }

@@ -229,9 +229,8 @@ const LoginRegisterPage = () => {
             const loginResult = await dispatch(userLogin(payload));
             unwrapResult(loginResult);
             const getInfoResult = await dispatch(userGetInfo());
-            const result = unwrapResult(getInfoResult);
-            console.log(result)
-            // history.push("/")
+            unwrapResult(getInfoResult);
+            history.push("/")
         } catch (err) {
             console.log(err);
         }

@@ -23,4 +23,7 @@ public class ClosureEcommerceErrorCode {
     //customer error code
     public static final String CUSTOMER_NOT_FOUND = "CUSTOMER-EX-NOT-FOUND";
 
+    //cart error code
+    public static final String CART_PRODUCT_NOT_FOUND = "CART-EX-PRODUCT-NOT-FOUND";
+
 }

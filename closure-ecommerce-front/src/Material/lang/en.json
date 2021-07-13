@@ -5,55 +5,82 @@
     "notification": "NOTIFICATION",
     "login": "LOGIN",
     "account": "ACCOUNT",
-    "category": "Category"
+    "category": "Category",
+    "order": "Order history",
+    "logout": "Log out",
+    "profile": "Profile"
   },
-  "book-introduce": {
-    "publisher": "Supplier",
-    "author": "Author",
-    "quantity": "Quantity",
-    "add-to-cart": "Add to cart",
-    "buy-now": "Buy Now",
-    "total": "Total"
+  "product-detail-page": {
+    "introduce": {
+      "publisher": "Supplier",
+      "author": "Author",
+      "quantity": "Quantity",
+      "add-to-cart": "Add to cart",
+      "buy-now": "Buy Now",
+      "total": "Total",
+      "notification": {
+        "add-to-cart-success": "Add this product to cart successfully",
+        "go-to-cart": "Go to cart?"
+      }
+    },
+    "review": {
+      "headline": "Review"
+    }
   },
-  "checkout": {
+  "cart-page": {
     "headline": "Cart",
     "rough": "Rough",
     "total": "Total",
     "discount": "Discount",
     "checkout": "Checkout",
-    "shipping": "Shipping"
+    "empty-cart": "There is no product in your cart"
   },
-  "payment": {
+  "payment-checkout-page": {
     "headline": "Payment",
+    "order-btn": "Order",
     "type": {
       "cash": "Cash payment on delivery"
     },
     "order": {
-      "order": "Order",
+      "headline": "Order",
       "product": "product",
-      "more-info": "More Info"
+      "more-info": "More Info",
+      "rough": "Rough",
+      "shipping": "Shipping",
+      "total": "Total"
     },
-    "address": "Address",
-    "phone": "Phone",
-    "edit": "Edit"
+    "address": {
+      "headline": "Address",
+      "phone": "Phone"
+    },
+    "edit": "Edit",
+    "notification": {
+      "success": "Order successfully",
+      "go-to-order-history": "Go to order page here"
+    }
   },
-  "order": {
+  "payment-history-page": {
     "headline": "My Order",
-    "table": {
+    "payment-list": {
       "code": "Order code",
       "order-date": "Order day",
-      "product": "Product",
+      "method": "Method",
       "total": "Total",
       "status": "Status"
     }
   },
-  "order-detail": {
+  "payment-detail-page": {
     "headline": "Order detail",
-    "address": "Address",
-    "phone": "Phone",
-    "delivery": "Delivery",
-    "payment": "Payment",
-    "products": {
+    "address": {
+      "headline": "Address",
+      "phone": "Phone"
+    },
+    "delivery": {
+      "headline": "Delivery",
+      "ship-date": "Shipping Date",
+      "ship-price": "Shipping Price"
+    },
+    "product-list": {
       "name": "Product",
       "price": "Price",
       "quantity": "Quantity",

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Col, Container, Nav, Row} from 'react-bootstrap';
 import {useTranslation, withTranslation} from "react-i18next";
-import {makeStyles} from "@material-ui/core";
+import {Divider, makeStyles} from "@material-ui/core";
 import {DefaultTheme} from '../../../theme';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import Button from "@material-ui/core/Button";
@@ -9,10 +9,12 @@ import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneO
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
-import {useSelector} from "react-redux";
-import {getCurrentUser} from "../../Feature/UserSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {getCurrentUser, userLogOut} from "../../Feature/UserSlice";
 import {useForm} from "react-hook-form";
-
+import PermContactCalendarOutlinedIcon from '@material-ui/icons/PermContactCalendarOutlined';
+import ShoppingBasketOutlinedIcon from '@material-ui/icons/ShoppingBasketOutlined';
+import {useHistory} from "react-router-dom";
 
 const Header = () => {
 
@@ -96,6 +98,25 @@ const Header = () => {
                 fontSize: 24,
                 color: DefaultTheme.default6
             }
+        },
+        dropdown: {
+            background: 'white',
+            position: "absolute",
+            zIndex: 1000,
+            right: '100%',
+            top: 45,
+            display: 'flex',
+            flexDirection: 'column',
+            borderRadius: 5,
+            boxShadow: '1px 2px 4px rgba(0, 0, 0, .5)',
+            '& a': {
+                minWidth: 250,
+                padding: 12,
+                display: 'flex',
+                '& svg': {
+                    marginRight: 8,
+                },
+            }
         }
     }));
 
@@ -108,13 +129,22 @@ const Header = () => {
         localStorage.setItem('lan', lan);
     }
 
-    const currentUser = useSelector(getCurrentUser)
+    const currentUser = useSelector(getCurrentUser);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
         console.log(data)
     }
+
+    const handleLogout = () => {
+        dispatch(userLogOut());
+        history.push("/");
+    }
+
+    const [showDropdown, setShowDropdown] = useState(false);
 
     return (
         <div className={classes.root}>
@@ -143,18 +173,49 @@ const Header = () => {
                     </Col>
                     <Col xl={1}>
                         {
-                            currentUser.id !== undefined ? (
+                            currentUser.id === undefined ? (
                                 <Nav.Link href={"/login"} className={classes.icon}><ExitToAppOutlinedIcon/>
                                     <p>{t('header.login')}</p></Nav.Link>
                             ) : (
-                                <Nav.Link to={"#"} className={classes.icon}><PersonOutlineOutlinedIcon/>
-                                    <p>{t('header.account')}</p>
-                                </Nav.Link>
+                                <div>
+                                    <Nav.Link to={"#"} className={classes.icon}
+                                              onMouseEnter={() => setShowDropdown(!showDropdown)}>
+                                        <PersonOutlineOutlinedIcon/>
+                                        <p>{currentUser.username.toUpperCase()}</p>
+                                    </Nav.Link>
+                                </div>
                             )
                         }
 
                     </Col>
-                    <Col xl={1}></Col>
+                    <Col xl={1}>
+                        {
+                            showDropdown && (
+                                <div className={classes.dropdown} onMouseLeave={() => setShowDropdown(!showDropdown)}>
+                                    <Nav.Link href={"#"}>
+                                        <PermContactCalendarOutlinedIcon/>
+                                        <p>
+                                            {t('header.profile')}
+                                        </p>
+                                    </Nav.Link>
+                                    <Divider/>
+                                    <Nav.Link href={"/order/history"}>
+                                        <ShoppingBasketOutlinedIcon/>
+                                        <p>
+                                            {t('header.order')}
+                                        </p>
+                                    </Nav.Link>
+                                    <Divider/>
+                                    <Nav.Link href={"#"} onClick={handleLogout}>
+                                        <ExitToAppOutlinedIcon/>
+                                        <p>
+                                            {t('header.logout')}
+                                        </p>
+                                    </Nav.Link>
+                                </div>
+                            )
+                        }
+                    </Col>
                 </Row>
             </Container>
         </div>

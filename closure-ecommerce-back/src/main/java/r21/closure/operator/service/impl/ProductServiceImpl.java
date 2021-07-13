@@ -45,8 +45,8 @@ public class ProductServiceImpl implements ProductService {
         productRatings.forEach(productRating -> {
             MySqlCustomer customer = customerValidator.getCustomerIfExist(productRating.getCustomerId());
             Neo4jRating neo4jRating = new Neo4jRating();
-            neo4jRating.setComment(String.valueOf(productRating.getScore()));
-            neo4jRating.setScore(productRating.getComment());
+            neo4jRating.setComment(productRating.getComment());
+            neo4jRating.setScore(productRating.getScore());
             ratingDtos.add(RatingMapper.buildProductRatingDto(customer, neo4jRating));
         });
         productDto.setRatings(ratingDtos);

@@ -13,7 +13,7 @@ import org.neo4j.ogm.annotation.*;
 public class Neo4jRating extends AbstractNeo4jEntity{
 
     @Property
-    private String score;
+    private Double score;
 
     @Property
     private String comment;

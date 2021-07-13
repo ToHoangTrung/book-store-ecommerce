@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import r21.closure.operator.model.dto.CustomerDto;
 import r21.closure.operator.model.dto.UserDto;
 import r21.closure.operator.model.entity.mysql.MySqlCustomer;
 import r21.closure.operator.model.entity.mysql.MySqlUser;
@@ -21,6 +22,7 @@ import r21.closure.operator.security.jwt.AuthTokenFilter;
 import r21.closure.operator.security.jwt.JwtUtils;
 import r21.closure.operator.security.service.UserDetailsImpl;
 import r21.closure.operator.service.UserService;
+import r21.closure.operator.util.CustomerMapper;
 import r21.closure.operator.util.UserMapper;
 import r21.closure.operator.validator.UserValidator;
 
@@ -91,5 +93,12 @@ public class UserServiceImpl implements UserService {
             return UserMapper.userToUserDto(user);
         }
         return null;
+    }
+
+    @Override
+    public CustomerDto getCustomerFromJwt(HttpServletRequest request) {
+        UserDto user = getUserInfoFromJwt(request);
+        MySqlCustomer customer = mySqlCustomerRepository.findByUserId(user.getId());
+        return CustomerMapper.customerToCustomerDto(customer);
     }
 }

@@ -9,7 +9,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchAllCatalog, selectAllCatalog} from "../../Feature/CatalogSlice";
 import {fetchAllProduct, fetchProductsByCatalogId, selectAllProduct} from "../../Feature/ProductSlice";
 import {unwrapResult} from "@reduxjs/toolkit";
-
+import '../../Style/MainPage.scss'
+import {getCurrentUser} from "../../Feature/UserSlice";
 
 const Catalogs = (props) => {
 
@@ -45,6 +46,8 @@ const Catalogs = (props) => {
     const {t} = useTranslation('common');
     const classes = useStyles();
 
+    const currentUser = useSelector(getCurrentUser);
+
     return (
         <div className={classes.root}>
             <Row noGutters>
@@ -61,7 +64,7 @@ const Catalogs = (props) => {
     )
 }
 
-const Products = (props) => {
+const ProductList = (props) => {
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -155,6 +158,8 @@ const Products = (props) => {
 
 const ProductListPage = ({match}) => {
 
+    const {catalogId} = match.params;
+
     const useStyles = makeStyles((theme) => ({
         root: {
             '& a': {
@@ -186,17 +191,13 @@ const ProductListPage = ({match}) => {
             padding: 16,
         }
     }));
-
     const [t] = useTranslation('common');
     const classes = useStyles();
+
     const dispatch = useDispatch();
-
-    // const catalogs = useSelector(selectAllCatalog);
     const [catalogs, setCatalogs] = useState([]);
+
     const [products, setProducts] = useState([]);
-
-    const {catalogId} = match.params;
-
     const [loading, setLoading] = useState(true);
     const [mainCatalog, setMainCatalog] = useState({
         id: 0,
@@ -244,7 +245,7 @@ const ProductListPage = ({match}) => {
                                         )
                                     }
                                 </div>
-                                <Products products={products}/>
+                                <ProductList products={products}/>
                             </div>
                         </Col>
                         <Col sm={3}>

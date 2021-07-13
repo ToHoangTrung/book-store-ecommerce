@@ -27,6 +27,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-select": "^3.1.0",
+    "react-star-ratings": "^2.3.0",
     "react-swipeable-views": "^0.14.0",
     "schema-utils": "^2.7.0"
   },
