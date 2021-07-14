@@ -54,7 +54,7 @@ const PaymentType = () => {
                     <input type="radio" className={classes.check}/>
                     <p className={classes.text}>
                         <span><LocalAtmIcon style={{fontSize: 32}}/></span>
-                        <sppan>{t('payment-checkout-page.type.cash')}</sppan>
+f                        <span>{t('payment-checkout-page.type.cash')}</span>
                     </p>
                 </div>
             </div>
