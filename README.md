@@ -1,2 +1,2 @@
 # closure-ecommerce
-Closure BookStore Ecommerce Website using Java Spring Boot and ReactJs
+BookStore Ecommerce Website using Java Spring Boot and ReactJs with MySQL, MongoDB, Redis and Neo4j DB
